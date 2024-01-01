@@ -32,14 +32,14 @@ nano teste.txt
 
 ## Criptografar:
 
-- Para criptografar o arquivo ``` teste.txt ``` execute o script ``` encryoter.py ``` utilizando o comando:
+- Para criptografar o arquivo ``` teste.txt ``` execute o script ``` encrypter.py ``` utilizando o comando:
 ```bash
 python encrypter.py
 ```
-- Será solicitado o caminho do arquivo a ser criptografado, caso esteja na mesma pasta, basta digitar o nome do arquivo.
+- Será solicitado o caminho do arquivo a ser criptografado, se estiver na mesma pasta, basta digitar o nome do arquivo.
 
 - Em seguida insira a chave para criptografar, que deve conter 16, 24 ou 32 dígitos.
-  - A senha não será visível ao ser digitada propositalmente.
+  - A senha não será visível ao ser digitada de propósito.
   - Caso a chave informada não tenha o comprimento de caracteres, será solicitado novamente.
 
 - O arquivo será criptografado e aparecerá com novo nome:
@@ -52,9 +52,9 @@ python encrypter.py
 
 ## Descriptografar:
 
-- Para descriptografar o arquivo execute o script ``` decryoter.py ``` utilizando o comando:
+- Para descriptografar o arquivo execute o script ``` decrypter.py ``` utilizando o comando:
 ```bash
-python encrypter.py
+python decrypter.py
 ```
 
 - O passo a passo para descriptografar é igual ao script de criptografia.
